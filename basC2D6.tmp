@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://7t8ifbym3mbg"]
+
+[ext_resource type="Script" path="res://shared_scripts/basic_enemy.gd" id="1_hmd51"]
+[ext_resource type="Script" path="res://idle.gd" id="2_jd23w"]
+[ext_resource type="Script" path="res://chasing.gd" id="3_ovlvt"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_j4w8r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v47jn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gsabg"]
+
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
+collision_layer = 6
+collision_mask = 15
+script = ExtResource("1_hmd51")
+initial_state = NodePath("States/Idle")
+
+[node name="MainSprite" type="Sprite2D" parent="."]
+modulate = Color(0.651081, 0.266725, 0.187342, 1)
+self_modulate = Color(0.267503, 0, 0.0167671, 1)
+scale = Vector2(20, 20)
+texture = SubResource("CanvasTexture_j4w8r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v47jn")
+
+[node name="States" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="States"]
+script = ExtResource("2_jd23w")
+
+[node name="Chasing" type="Node" parent="States"]
+script = ExtResource("3_ovlvt")
+
+[node name="SenseRange" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SenseRange"]
+scale = Vector2(8, 8)
+shape = SubResource("CircleShape2D_gsabg")

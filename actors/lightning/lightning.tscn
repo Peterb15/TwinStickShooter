@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://c30nw7skjibaq"]
+
+[ext_resource type="Script" path="res://actors/lightning/lightning.gd" id="1_nmt6r"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_t5qas"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbs76"]
+radius = 29.8329
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_harmj"]
+
+[node name="lightning" type="Area2D"]
+collision_layer = 4
+collision_mask = 18
+script = ExtResource("1_nmt6r")
+
+[node name="MainSprite" type="Sprite2D" parent="."]
+modulate = Color(0.784314, 0.501961, 1, 1)
+rotation = -0.0112705
+scale = Vector2(7.48, 28.48)
+texture = SubResource("CanvasTexture_t5qas")
+
+[node name="MainSprite3" type="Sprite2D" parent="."]
+modulate = Color(0.784314, 0.501961, 1, 1)
+position = Vector2(0, -15)
+rotation = -0.0112705
+scale = Vector2(7.48, 28.48)
+texture = SubResource("CanvasTexture_t5qas")
+
+[node name="MainSprite4" type="Sprite2D" parent="."]
+modulate = Color(0.784314, 0.501961, 1, 1)
+position = Vector2(22, 10)
+rotation = -0.0112705
+scale = Vector2(7.48, 28.48)
+texture = SubResource("CanvasTexture_t5qas")
+
+[node name="MainSprite5" type="Sprite2D" parent="."]
+modulate = Color(0.784314, 0.501961, 1, 1)
+position = Vector2(22, 33)
+rotation = -0.0112705
+scale = Vector2(7.48, 28.48)
+texture = SubResource("CanvasTexture_t5qas")
+
+[node name="MainSprite2" type="Sprite2D" parent="."]
+modulate = Color(0.784314, 0.501961, 1, 1)
+position = Vector2(12, 2)
+rotation = 0.892342
+scale = Vector2(7.48, 28.48)
+texture = SubResource("CanvasTexture_t5qas")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18, 30)
+rotation = -1.81666
+shape = SubResource("CircleShape2D_qbs76")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(11, -5)
+shape = SubResource("CircleShape2D_qbs76")
+
+[node name="TimeToLive" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="SenseRange" type="Area2D" parent="."]
+position = Vector2(10, 9)
+scale = Vector2(1.63605, 1.54852)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SenseRange"]
+scale = Vector2(8, 8)
+shape = SubResource("CircleShape2D_harmj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TimeToLive" to="." method="_on_time_to_live_timeout"]
