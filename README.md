@@ -59,5 +59,17 @@
 
 ![2 4](https://github.com/user-attachments/assets/11327325-04b9-49a2-8553-f78a9b09d62c)
 
+</p>
+<br>
+
+
+<h1> EX. Video </h1>
+
+<p>
+  (https://github.com/user-attachments/assets/9883224f-a6a2-45a6-8d9f-7f0f34628b66)
+  
+</p>
+
+
 
 
